@@ -82,13 +82,23 @@ def ficha(p, tag="article", id_=""):
 <footer><strong>Guardá esta página en tu celular.</strong><span>Esta información no reemplaza la consulta médica.</span></footer>
 </{tag}>"""
 
-# Medición futura: la página lee ?s=nfc o ?s=qr. Cuando esté Supabase, acá se registra el evento.
+# Medición: la página lee ?s=nfc o ?s=qr y registra el escaneo en Supabase (tabla escaneos, solo inserción anónima).
+# La clave anon es pública por diseño; la seguridad la da RLS (ver supabase/escaneos.sql).
+SUPABASE_URL = "https://mffvkijopbweiycnpyqy.supabase.co"
+SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mZnZraWpvcGJ3ZWl5Y25weXF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0MDg5NzQsImV4cCI6MjEwNjk4NDk3NH0.dO5AV-LbeG6pBKaGlORxl5HRivehN_tIZd4o1yaD4YA"
 TRACK = """<script>
-(function(){try{var s=new URLSearchParams(location.search).get('s')||'directo';
+(function(){try{
+var s=new URLSearchParams(location.search).get('s');
+s=(s==='nfc'||s==='qr')?s:'directo';
 var tema=document.body.dataset.tema;
-/* TODO medición: enviar {tema, origen:s, fecha} a Supabase */
+if(!tema)return;
+var k='esc:'+tema+':'+s;
+try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1');}catch(e){}
+fetch('__URL__/rest/v1/escaneos',{method:'POST',keepalive:true,
+headers:{'apikey':'__KEY__','Authorization':'Bearer __KEY__','Content-Type':'application/json','Prefer':'return=minimal'},
+body:JSON.stringify({tema:tema,origen:s,user_agent:(navigator.userAgent||'').slice(0,300)})}).catch(function(){});
 }catch(e){}})();
-</script>"""
+</script>""".replace("__URL__", SUPABASE_URL).replace("__KEY__", SUPABASE_ANON)
 
 def doc(titulo, cuerpo, tema=""):
     return f"""<!doctype html><html lang="es"><head><meta charset="utf-8">
