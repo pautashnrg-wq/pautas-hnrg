@@ -1,0 +1,62 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diarrea y vómitos · Guardia HNRG</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap"><style>
+/* Ficha de bolsillo: una columna angosta, la alarma en rojo arriba de todo, lo demás tranquilo */
+:root{
+  --bg:#F4F7F8; --card:#FFFFFF; --ink:#13303A; --muted:#536A73; --line:#D9E3E6;
+  --alarm:#B42318; --alarm-bg:#FDEDEB; --alarm-ink:#7A1A12;
+  --azul:#1F5FA6; --ambar:#9A5B00; --verde:#2A7148;
+  --f-display:"Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1A1F; --card:#15252B; --ink:#E6EFF1; --muted:#9CB2B9; --line:#26393F;
+  --alarm:#FF8A7A; --alarm-bg:#3A1714; --alarm-ink:#FFD6CF;
+  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1A1F; --card:#15252B; --ink:#E6EFF1; --muted:#9CB2B9; --line:#26393F;
+  --alarm:#FF8A7A; --alarm-bg:#3A1714; --alarm-ink:#FFD6CF;
+  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.5}
+.wrap{max-width:34rem;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:flex;flex-direction:column;gap:20px}
+.hosp{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+header{display:flex;flex-direction:column;gap:4px;padding-bottom:16px;border-bottom:3px solid var(--tema)}
+h1{font-family:var(--f-display);font-weight:800;font-size:2.4rem;line-height:1.05;margin:4px 0 0;text-wrap:balance}
+.sub{color:var(--muted);font-size:1.05rem}
+h2{font-family:var(--f-display);font-weight:600;font-size:1.3rem;margin:0 0 8px;text-wrap:balance}
+ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+li{display:grid;grid-template-columns:1.4rem 1fr;gap:8px;align-items:start}
+li>span{min-width:0}
+.mk{font-weight:700;line-height:1.5;text-align:center}
+.intro p{margin:0 0 6px}
+.alarma{background:var(--alarm-bg);border:2px solid var(--alarm);border-radius:14px;padding:16px}
+.alarma h2{color:var(--alarm)}
+.alarma li{color:var(--alarm-ink)}
+.alarma .mk{color:var(--alarm)}
+.alarma .pie{margin:12px 0 0;font-weight:700;color:var(--alarm)}
+.cuidados .mk{color:var(--tema)}
+.evitar .mk{color:var(--muted)}
+footer{border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.9rem;display:flex;flex-direction:column;gap:4px}
+footer strong{color:var(--ink)}
+.t-azul{--tema:var(--azul)} .t-ambar{--tema:var(--ambar)} .t-verde{--tema:var(--verde)}
+.chip{align-self:flex-start;font-size:.8rem;font-weight:700;color:var(--tema);border:1.5px solid var(--tema);border-radius:999px;padding:1px 10px}
+nav.temas{display:flex;flex-wrap:wrap;gap:8px}
+nav.temas a{font-weight:700;color:var(--tema);text-decoration:none;border:1.5px solid var(--tema);border-radius:999px;padding:6px 14px}
+nav.temas a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.borrador{background:var(--card);border:1px dashed var(--muted);border-radius:10px;padding:10px 12px;font-size:.85rem;color:var(--muted)}
+.sep{height:28px}
+</style></head>
+<body data-tema="gastroenteritis"><main class="wrap"><div class="t-verde" style="display:flex;flex-direction:column;gap:20px">
+<header><div class="hosp">Hospital de Niños Ricardo Gutiérrez · Guardia</div><h1>Diarrea y vómitos</h1><div class="sub">Gastroenteritis aguda</div></header>
+<section class="intro"><p>Casi siempre la causa un virus. La diarrea puede durar hasta 5 a 7 días.</p><p>Lo más importante es que no se deshidrate.</p></section>
+<section class="alarma"><h2>Volvé a la guardia si…</h2><ul><li><span class="mk" aria-hidden="true">!</span><span>Tiene la boca seca, llora sin lágrimas o tiene los ojos hundidos.</span></li><li><span class="mk" aria-hidden="true">!</span><span>No hace pis en 6 a 8 horas.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Está muy decaído, dormido o irritable.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Vomita todo y no puede tomar las sales.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Tiene sangre en la caca.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Vomita verde.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Tiene dolor de panza fuerte o que no se va.</span></li></ul><p class="pie">Ante la duda, consultá. La guardia atiende las 24 horas.</p></section>
+<section class="cuidados"><h2>Cuidados en casa</h2><ul><li><span class="mk" aria-hidden="true">✓</span><span>Dale sales de rehidratación oral después de cada diarrea o vómito.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Si vomita, dale una cucharadita cada 1 o 2 minutos y andá aumentando.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Si toma el pecho, seguí dándole.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Volvé a su comida de siempre apenas tenga hambre.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Lavate bien las manos, sobre todo después de cambiar pañales.</span></li></ul></section>
+<section class="evitar"><h2>Qué no hacer</h2><ul><li><span class="mk" aria-hidden="true">✕</span><span>Jugos, gaseosas, bebidas deportivas y caldos de sobre.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Remedios para cortar la diarrea o los vómitos sin indicación médica.</span></li></ul></section>
+<footer><strong>Guardá esta página en tu celular.</strong><span>Esta información no reemplaza la consulta médica.</span></footer>
+</div></main><script>
+(function(){try{var s=new URLSearchParams(location.search).get('s')||'directo';
+var tema=document.body.dataset.tema;
+/* TODO medición: enviar {tema, origen:s, fecha} a Supabase */
+}catch(e){}})();
+</script></body></html>

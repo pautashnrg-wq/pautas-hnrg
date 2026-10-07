@@ -1,0 +1,4 @@
+tema,url_para_grabar_en_NFC,url_del_QR
+Catarro,https://pautas-hnrg.vercel.app/catarro?s=nfc,https://pautas-hnrg.vercel.app/catarro?s=qr
+Fiebre,https://pautas-hnrg.vercel.app/fiebre?s=nfc,https://pautas-hnrg.vercel.app/fiebre?s=qr
+Diarrea y vómitos,https://pautas-hnrg.vercel.app/gastroenteritis?s=nfc,https://pautas-hnrg.vercel.app/gastroenteritis?s=qr
