@@ -103,13 +103,13 @@ def main():
     # 1. Sitio para Vercel
     for p in PAUTAS:
         os.makedirs(os.path.join(SITE, p["slug"]))
-        open(os.path.join(SITE, p["slug"], "index.html"), "w").write(doc(p["titulo"], ficha(p, "div"), p["slug"]))
+        open(os.path.join(SITE, p["slug"], "index.html"), "w", encoding="utf-8").write(doc(p["titulo"], ficha(p, "div"), p["slug"]))
     nav = "".join(f'<a class="t-{p["color"]}" href="/{p["slug"]}">{e(p["titulo"])}</a>' for p in PAUTAS)
-    open(os.path.join(SITE, "index.html"), "w").write(doc("Pautas", f'<header class="t-azul"><div class="hosp">{e(HOSPITAL)}</div><h1>Pautas para casa</h1></header><nav class="temas">{nav}</nav>'))
-    open(os.path.join(SITE, "vercel.json"), "w").write('{"cleanUrls": true, "trailingSlash": false}\n')
+    open(os.path.join(SITE, "index.html"), "w", encoding="utf-8").write(doc("Pautas", f'<header class="t-azul"><div class="hosp">{e(HOSPITAL)}</div><h1>Pautas para casa</h1></header><nav class="temas">{nav}</nav>'))
+    open(os.path.join(SITE, "vercel.json"), "w", encoding="utf-8").write('{"cleanUrls": true, "trailingSlash": false}\n')
 
     # 2. QR (PNG para imprimir, SVG para diseño) y URLs NFC
-    with open(os.path.join(OUT, "urls_nfc_qr.csv"), "w", newline="") as f:
+    with open(os.path.join(OUT, "urls_nfc_qr.csv"), "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f); w.writerow(["tema", "url_para_grabar_en_NFC", "url_del_QR"])
         for p in PAUTAS:
             w.writerow([p["titulo"], url(p, "nfc"), url(p, "qr")])
@@ -138,7 +138,7 @@ def main():
     prev = (f"<title>Pautas Guardia HNRG</title>{FONTS}<style>{CSS}</style><main class=\"wrap\">"
             f'<div class="borrador">Vista previa · borrador para revisar con residentes. Cada tema tendrá su propia página, NFC y QR.</div>'
             f'<nav class="temas">{navp}</nav>{fichas}</main>')
-    open(os.path.join(OUT, "vista_previa.html"), "w").write(prev)
+    open(os.path.join(OUT, "vista_previa.html"), "w", encoding="utf-8").write(prev)
     shutil.make_archive(os.path.join(OUT, "sitio_vercel"), "zip", SITE)
     print("OK", BASE)
 
