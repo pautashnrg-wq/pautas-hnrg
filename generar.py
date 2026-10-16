@@ -54,6 +54,17 @@ li>span{min-width:0}
 .alarma .mk{color:var(--alarm)}
 .alarma .pie{margin:12px 0 0;font-weight:700;color:var(--alarm)}
 .cuidados .mk{color:var(--tema)}
+.bloque{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.bloque h3{font-family:var(--f-display);font-weight:600;font-size:1.1rem;margin:0;color:var(--tema)}
+.bloque p{margin:0}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-variant-numeric:tabular-nums}
+caption{text-align:left;font-weight:700;padding-bottom:6px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:.85rem;color:var(--muted);background:var(--bg)}
+tbody tr:last-child td{border-bottom:0}
+ol{margin:0;padding:0;list-style:none;counter-reset:paso;display:flex;flex-direction:column;gap:10px}
+ol li{counter-increment:paso}
+ol li::before{content:counter(paso);font-weight:700;color:var(--card);background:var(--tema);border-radius:50%;width:1.4rem;height:1.4rem;display:grid;place-items:center;font-size:.85rem;margin-top:.1rem}
 .evitar .mk{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.9rem;display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--ink)}
@@ -71,13 +82,31 @@ e = html.escape
 def lista(items, marca):
     return "<ul>" + "".join(f'<li><span class="mk" aria-hidden="true">{marca}</span><span>{e(i)}</span></li>' for i in items) + "</ul>"
 
+def tabla(t):
+    cab = "".join(f"<th>{e(c)}</th>" for c in t["cols"])
+    filas = "".join("<tr>" + "".join(f"<td>{e(c)}</td>" for c in f) + "</tr>" for f in t["filas"])
+    return f'<table><caption>{e(t["titulo"])}</caption><thead><tr>{cab}</tr></thead><tbody>{filas}</tbody></table>'
+
+def pasos(items):
+    return "<ol>" + "".join(f"<li>{e(i)}</li>" for i in items) + "</ol>"
+
+def bloque(b):
+    """Bloque de cuidados con título; admite parrafos, items (lista con ✓), pasos (numerados) y tabla."""
+    h = f'<div class="bloque"><h3>{e(b["titulo"])}</h3>'
+    h += "".join(f"<p>{e(x)}</p>" for x in b.get("parrafos", []))
+    if "tabla" in b: h += tabla(b["tabla"])
+    if "items" in b: h += lista(b["items"], "✓")
+    if "pasos" in b: h += pasos(b["pasos"])
+    return h + "</div>"
+
 def ficha(p, tag="article", id_=""):
     idattr = f' id="{id_}"' if id_ else ""
+    cuidados = (lista(p["cuidados"], "✓") if p["cuidados"] else "") + "".join(bloque(b) for b in p.get("bloques", []))
     return f"""<{tag} class="t-{p['color']}"{idattr} style="display:flex;flex-direction:column;gap:20px">
 <header><div class="hosp">{e(HOSPITAL)}</div><h1>{e(p['titulo'])}</h1><div class="sub">{e(p['subtitulo'])}</div></header>
 <section class="intro">{''.join(f'<p>{e(x)}</p>' for x in p['que_es'])}</section>
 <section class="alarma"><h2>Volvé a la guardia si…</h2>{lista(p['alarma'], '!')}<p class="pie">Ante la duda, consultá. La guardia atiende las 24 horas.</p></section>
-<section class="cuidados"><h2>Cuidados en casa</h2>{lista(p['cuidados'], '✓')}</section>
+<section class="cuidados"><h2>Cuidados en casa</h2>{cuidados}</section>
 <section class="evitar"><h2>Qué no hacer</h2>{lista(p['evitar'], '✕')}</section>
 <footer><strong>Guardá esta página en tu celular.</strong><span>Esta información no reemplaza la consulta médica.</span></footer>
 </{tag}>"""

@@ -73,29 +73,89 @@ PAUTAS = [
         "titulo": "Diarrea y vómitos",
         "subtitulo": "Gastroenteritis aguda",
         "color": "verde",
+        # Contenido armado por el equipo médico (PDF del 14/10/2026). Falta revisión final con los residentes.
         "que_es": [
-            "Casi siempre la causa un virus. La diarrea puede durar hasta 5 a 7 días.",
-            "Lo más importante es que no se deshidrate.",
+            "La gastroenteritis es un cuadro viral que se caracteriza por diarrea y/o vómitos, con o sin fiebre.",
+            "Es muy frecuente en menores de 5 años, más todavía cuando recién empiezan las clases.",
+            "Puede durar hasta 7 días y generalmente no es grave.",
         ],
-        "cuidados": [
-            "Dale sales de rehidratación oral después de cada diarrea o vómito.",
-            "Si vomita, dale una cucharadita cada 1 o 2 minutos y andá aumentando.",
-            "Si toma el pecho, seguí dándole.",
-            "Volvé a su comida de siempre apenas tenga hambre.",
-            "Lavate bien las manos, sobre todo después de cambiar pañales.",
+        "cuidados": [],
+        "bloques": [
+            {
+                "titulo": "¡Hidratación primero!",
+                "parrafos": [
+                    "Los chicos tienen que tomar de base entre 1 y 1,5 litros de agua por día.",
+                    "Se rehidratan con agua mineral o con sales de rehidratación oral (SRO).",
+                    "Por cada diarrea, tiene que tomar 10 ml por kilo de peso. Por cada vómito, 2 ml por kilo.",
+                ],
+                "tabla": {
+                    "titulo": "Cuánto tomar según el peso",
+                    "cols": ["Peso", "Por cada vómito", "Por cada diarrea"],
+                    "filas": [
+                        ["10 kg", "20 ml", "100 ml"],
+                        ["15 kg", "30 ml", "150 ml"],
+                        ["20 kg", "40 ml", "200 ml"],
+                        ["25 kg", "50 ml", "250 ml"],
+                        ["30 kg", "60 ml", "300 ml"],
+                    ],
+                },
+            },
+            {
+                "titulo": "Cómo preparar las SRO",
+                "items": [
+                    "Mezclá un sobre de sales en 1 litro de agua.",
+                    "El agua tiene que ser de la canilla, hervida antes por 10 minutos.",
+                    "Esta preparación dura exactamente 24 horas.",
+                    "Anotá en el recipiente el día y la hora en que la preparaste.",
+                ],
+            },
+            {
+                "titulo": "Dieta",
+                "items": [
+                    "Dale de 5 a 6 comidas por día, más chicas.",
+                    "Evitá los azúcares (gaseosas, jugos, golosinas, mermeladas, chocolatadas) y las grasas (facturas, frituras, aceite en las comidas, carnes grasosas): pueden aumentar el volumen de la caca.",
+                    "Evitá las frutas y verduras de color rojo.",
+                    "Podés darle yogur y leche, pero descremados.",
+                    "El apetito va a volver de a poco.",
+                    "Qué darle: arroz, pastas o papa hervida + pollo a la plancha o hervido + fruta + yogur descremado.",
+                ],
+            },
+            {
+                "titulo": "Después de cada vómito",
+                "pasos": [
+                    "Esperá mínimo 30 minutos antes de darle agua.",
+                    "Dale agua o SRO de a poco: una cucharada o 5 ml con jeringa.",
+                    "Si vuelve a vomitar, esperá otros 30 minutos.",
+                    "Probá con Reliveran gotas niños: 1 gota por kilo. Esperá otros 30 minutos.",
+                    "Dale agua de a poco. Si vomita ese agua, andá a la guardia. Si la tolera, seguí dándole de a poco.",
+                ],
+            },
+            {
+                "titulo": "Lavado de manos",
+                "parrafos": [
+                    "El lavado de manos es fundamental para no contagiarse la diarrea.",
+                ],
+                "items": [
+                    "Cada vez que cambiás un pañal.",
+                    "Antes y después de cada comida.",
+                    "Cada vez que el chico va al baño.",
+                ],
+            },
         ],
         "evitar": [
-            "Jugos, gaseosas, bebidas deportivas y caldos de sobre.",
-            "Remedios para cortar la diarrea o los vómitos sin indicación médica.",
+            "Rehidratar con gaseosas, jugos o jugos deportivos.",
+            "Dar golosinas o frituras.",
+            "Dar medicamentos para cortar la diarrea o calmar el dolor.",
+            "Dar tés de yuyos.",
+            "Mandarlo a la escuela antes de que pasen 24 horas desde que terminó la diarrea.",
+            "Dar antibióticos, a menos que los recete el médico.",
         ],
         "alarma": [
-            "Tiene la boca seca, llora sin lágrimas o tiene los ojos hundidos.",
-            "No hace pis en 6 a 8 horas.",
-            "Está muy decaído, dormido o irritable.",
-            "Vomita todo y no puede tomar las sales.",
-            "Tiene sangre en la caca.",
-            "Vomita verde.",
-            "Tiene dolor de panza fuerte o que no se va.",
+            "Vomita todo lo que toma.",
+            "Hace pis menos seguido: cada 8 horas o más en menores de 12 meses, cada 12 horas o más en menores de 5 años.",
+            "Tiene sangre en la caca o en los vómitos.",
+            "Está muy dormido y cuesta despertarlo.",
+            "El dolor de panza es constante durante varias horas.",
         ],
     },
 ]
