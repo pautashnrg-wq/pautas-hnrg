@@ -36,6 +36,17 @@ li>span{min-width:0}
 .alarma .mk{color:var(--alarm)}
 .alarma .pie{margin:12px 0 0;font-weight:700;color:var(--alarm)}
 .cuidados .mk{color:var(--tema)}
+.bloque{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.bloque h3{font-family:var(--f-display);font-weight:600;font-size:1.1rem;margin:0;color:var(--tema)}
+.bloque p{margin:0}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-variant-numeric:tabular-nums}
+caption{text-align:left;font-weight:700;padding-bottom:6px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:.85rem;color:var(--muted);background:var(--bg)}
+tbody tr:last-child td{border-bottom:0}
+ol{margin:0;padding:0;list-style:none;counter-reset:paso;display:flex;flex-direction:column;gap:10px}
+ol li{counter-increment:paso}
+ol li::before{content:counter(paso);font-weight:700;color:var(--card);background:var(--tema);border-radius:50%;width:1.4rem;height:1.4rem;display:grid;place-items:center;font-size:.85rem;margin-top:.1rem}
 .evitar .mk{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.9rem;display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--ink)}
@@ -46,13 +57,26 @@ nav.temas a{font-weight:700;color:var(--tema);text-decoration:none;border:1.5px 
 nav.temas a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .borrador{background:var(--card);border:1px dashed var(--muted);border-radius:10px;padding:10px 12px;font-size:.85rem;color:var(--muted)}
 .sep{height:28px}
+/* Recuadro de aviso (amarillo pastel), al estilo del de alarma pero secundario */
+.aviso{background:#FEF6DA;border:2px solid #E3B341;border-radius:14px;padding:16px}
+.aviso h3{color:#8A5A00}
+.aviso .mk{color:#C98A00}
+.aviso li,.aviso p{color:#5A4300}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .aviso{background:#2C2511;border-color:#B98B24}
+:root:not([data-theme="light"]) .aviso h3{color:#F2C14E}
+:root:not([data-theme="light"]) .aviso .mk{color:#F2C14E}
+:root:not([data-theme="light"]) .aviso li,:root:not([data-theme="light"]) .aviso p{color:#F0E2BC}}
+:root[data-theme="dark"] .aviso{background:#2C2511;border-color:#B98B24}
+:root[data-theme="dark"] .aviso h3{color:#F2C14E}
+:root[data-theme="dark"] .aviso .mk{color:#F2C14E}
+:root[data-theme="dark"] .aviso li,:root[data-theme="dark"] .aviso p{color:#F0E2BC}
 </style></head>
 <body data-tema="catarro"><main class="wrap"><div class="t-azul" style="display:flex;flex-direction:column;gap:20px">
-<header><div class="hosp">Hospital de Niños Ricardo Gutiérrez · Guardia</div><h1>Catarro</h1><div class="sub">Resfrío y vías aéreas superiores</div></header>
-<section class="intro"><p>Es una infección causada por virus. Mejora sola en 7 a 10 días.</p><p>La tos y los mocos pueden durar hasta 2 o 3 semanas. Es normal.</p><p>Los antibióticos no sirven para los virus.</p></section>
-<section class="alarma"><h2>Volvé a la guardia si…</h2><ul><li><span class="mk" aria-hidden="true">!</span><span>Respira rápido, se le hunden las costillas o hace ruido al respirar.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Tiene los labios o la cara morados.</span></li><li><span class="mk" aria-hidden="true">!</span><span>No quiere tomar líquidos o hace muy poco pis.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Tiene fiebre por más de 3 días.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Está muy dormido, cuesta despertarlo o está muy irritable.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Es menor de 3 meses y tiene 38 °C o más.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Le duele el oído, le sale líquido del oído, o empeora después de haber mejorado.</span></li></ul><p class="pie">Ante la duda, consultá. La guardia atiende las 24 horas.</p></section>
-<section class="cuidados"><h2>Cuidados en casa</h2><ul><li><span class="mk" aria-hidden="true">✓</span><span>Lavados nasales con solución fisiológica antes de comer y de dormir.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Ofrecé líquidos seguido y comidas en poca cantidad.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Elevá un poco la cabecera de la cama o la cuna.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>No fumes dentro de la casa ni cerca del chico.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Lavate las manos seguido para no contagiar a otros.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Si tiene fiebre o está molesto, dale el antitérmico en la dosis que te indicó el pediatra.</span></li></ul></section>
-<section class="evitar"><h2>Qué no hacer</h2><ul><li><span class="mk" aria-hidden="true">✕</span><span>Jarabes para la tos o descongestivos en menores de 6 años.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Antibióticos sin indicación médica.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Aspirina.</span></li></ul></section>
+<header><div class="hosp">Hospital de Niños Ricardo Gutiérrez · Guardia</div><h1>Catarro</h1><div class="sub">Resfrío e infecciones de vías aéreas superiores</div></header>
+<section class="intro"><p>El catarro de vías aéreas es una infección por virus, casi siempre el <strong>rinovirus</strong>.</p><p><u>Es muy común</u>: en menores de 6 años, tener hasta 10 episodios por año es normal, sobre todo al empezar el jardín o el colegio.</p><p>Da fiebre, tos y mocos. A veces también algún vómito aislado, sarpullido en la piel, ojos rojos o un poco de dolor de garganta.</p><p>Se cura solo. No necesita un tratamiento específico.</p></section>
+<section class="alarma"><h2>Volvé a la guardia si…</h2><ul><li><span class="mk" aria-hidden="true">!</span><span>Le cuesta respirar: se le marcan las costillas, se le hunde un huequito entre el cuello y el pecho, o respira muy rápido cuando no tiene fiebre.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Le duele el pecho.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Vomita y no logra tomar líquidos.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Se le pone azul la cara después de toser varias veces.</span></li><li><span class="mk" aria-hidden="true">!</span><span>La fiebre le dura más de 6 días.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Es menor de 3 meses y tiene fiebre.</span></li></ul><p class="pie">Ante la duda, consultá. La guardia atiende las 24 horas.</p></section>
+<section class="cuidados"><h2>Cuidados en casa</h2><ul><li><span class="mk" aria-hidden="true">✓</span><span>Dale el antitérmico solo si tiene fiebre (38 °C o más).</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Insistí con la hidratación: mejor ofrecerle agua que jugos o gaseosas.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>El apetito vuelve de a poco, a medida que mejora el cuadro.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Ayudalo a movilizar los mocos: lavados nasales con spray (tipo Hypersol) o solución fisiológica común + sacamocos.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Lavate las manos seguido para no contagiar a los demás.</span></li></ul><div class="bloque aviso"><h3>Para la tos</h3><ul><li><span class="mk" aria-hidden="true">✓</span><span>No le des remedios caseros para la tos.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Los jarabes para la tos que se venden en la farmacia no demostraron que sirvan.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Lo único recomendado es la <strong>miel</strong> 🍯, y solo en mayores de 1 año: 3 cucharadas, 3 veces por día, con una bebida caliente (té o leche).</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Si querés hacer vapor, que sea en la ducha con el agua caliente corriendo, siempre con un adulto al lado.</span></li></ul></div></section>
+<section class="evitar"><h2>Qué no hacer</h2><ul><li><span class="mk" aria-hidden="true">✕</span><span>Vapor con una olla de agua hirviendo con sal.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Nebulizaciones con corticoides o salbutamol.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Antibióticos.</span></li></ul></section>
 <footer><strong>Guardá esta página en tu celular.</strong><span>Esta información no reemplaza la consulta médica.</span></footer>
 </div></main><script>
 (function(){try{
