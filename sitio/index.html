@@ -5,18 +5,18 @@
 :root{
   --bg:#F4F7F8; --card:#FFFFFF; --ink:#13303A; --muted:#536A73; --line:#D9E3E6;
   --alarm:#B42318; --alarm-bg:#FDEDEB; --alarm-ink:#7A1A12;
-  --azul:#1F5FA6; --ambar:#9A5B00; --verde:#2A7148;
+  --azul:#1F5FA6; --ambar:#9A5B00; --verde:#2A7148; --rosa:#B5176E;
   --f-display:"Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
   --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0E1A1F; --card:#15252B; --ink:#E6EFF1; --muted:#9CB2B9; --line:#26393F;
   --alarm:#FF8A7A; --alarm-bg:#3A1714; --alarm-ink:#FFD6CF;
-  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; color-scheme:dark}}
+  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; --rosa:#F48FB1; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0E1A1F; --card:#15252B; --ink:#E6EFF1; --muted:#9CB2B9; --line:#26393F;
   --alarm:#FF8A7A; --alarm-bg:#3A1714; --alarm-ink:#FFD6CF;
-  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; color-scheme:dark}
+  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; --rosa:#F48FB1; color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.5}
 .wrap{max-width:34rem;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:flex;flex-direction:column;gap:20px}
@@ -36,20 +36,61 @@ li>span{min-width:0}
 .alarma .mk{color:var(--alarm)}
 .alarma .pie{margin:12px 0 0;font-weight:700;color:var(--alarm)}
 .cuidados .mk{color:var(--tema)}
+.bloque{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.bloque h3{font-family:var(--f-display);font-weight:600;font-size:1.1rem;margin:0;color:var(--tema)}
+.bloque p{margin:0}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-variant-numeric:tabular-nums}
+caption{text-align:left;font-weight:700;padding-bottom:6px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:.85rem;color:var(--muted);background:var(--bg)}
+tbody tr:last-child td{border-bottom:0}
+ol{margin:0;padding:0;list-style:none;counter-reset:paso;display:flex;flex-direction:column;gap:10px}
+ol li{counter-increment:paso}
+ol li::before{content:counter(paso);font-weight:700;color:var(--card);background:var(--tema);border-radius:50%;width:1.4rem;height:1.4rem;display:grid;place-items:center;font-size:.85rem;margin-top:.1rem}
 .evitar .mk{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.9rem;display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--ink)}
-.t-azul{--tema:var(--azul)} .t-ambar{--tema:var(--ambar)} .t-verde{--tema:var(--verde)}
+.t-azul{--tema:var(--azul)} .t-ambar{--tema:var(--ambar)} .t-verde{--tema:var(--verde)} .t-rosa{--tema:var(--rosa)}
 .chip{align-self:flex-start;font-size:.8rem;font-weight:700;color:var(--tema);border:1.5px solid var(--tema);border-radius:999px;padding:1px 10px}
 nav.temas{display:flex;flex-wrap:wrap;gap:8px}
 nav.temas a{font-weight:700;color:var(--tema);text-decoration:none;border:1.5px solid var(--tema);border-radius:999px;padding:6px 14px}
 nav.temas a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .borrador{background:var(--card);border:1px dashed var(--muted);border-radius:10px;padding:10px 12px;font-size:.85rem;color:var(--muted)}
 .sep{height:28px}
+/* Recuadro de aviso (amarillo pastel), al estilo del de alarma pero secundario */
+.aviso{background:#FEF6DA;border:2px solid #E3B341;border-radius:14px;padding:16px}
+.aviso h3{color:#8A5A00}
+.aviso .mk{color:#C98A00}
+.aviso li,.aviso p{color:#5A4300}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .aviso{background:#2C2511;border-color:#B98B24}
+:root:not([data-theme="light"]) .aviso h3{color:#F2C14E}
+:root:not([data-theme="light"]) .aviso .mk{color:#F2C14E}
+:root:not([data-theme="light"]) .aviso li,:root:not([data-theme="light"]) .aviso p{color:#F0E2BC}}
+:root[data-theme="dark"] .aviso{background:#2C2511;border-color:#B98B24}
+:root[data-theme="dark"] .aviso h3{color:#F2C14E}
+:root[data-theme="dark"] .aviso .mk{color:#F2C14E}
+:root[data-theme="dark"] .aviso li,:root[data-theme="dark"] .aviso p{color:#F0E2BC}
+/* Desplegables (details/summary): por ejemplo, dosis por fármaco */
+details.desp{border:1px solid var(--line);border-radius:10px;background:var(--card)}
+details.desp summary{cursor:pointer;padding:12px 14px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.desp summary::-webkit-details-marker{display:none}
+details.desp summary::after{content:"+";font-family:var(--f-display);font-size:1.4rem;line-height:1;color:var(--tema);font-weight:700}
+details.desp[open] summary::after{content:"–"}
+summary .droga{font-weight:700;color:var(--tema)}
+summary .pres{color:var(--ink);font-weight:400;font-size:.95rem}
+.desp-cont{padding:0 14px 14px}
+.nota{margin:10px 0 0;font-size:.9rem;color:var(--muted);font-style:italic}
 </style></head>
-<body data-tema=""><main class="wrap"><header class="t-azul"><div class="hosp">Hospital de Niños Ricardo Gutiérrez · Guardia</div><h1>Pautas para casa</h1></header><nav class="temas"><a class="t-azul" href="/catarro">Catarro</a><a class="t-ambar" href="/fiebre">Fiebre</a><a class="t-verde" href="/gastroenteritis">Diarrea y vómitos</a></nav></main><script>
-(function(){try{var s=new URLSearchParams(location.search).get('s')||'directo';
+<body data-tema=""><main class="wrap"><header class="t-azul"><div class="hosp">Hospital de Niños Ricardo Gutiérrez · Guardia</div><h1>Pautas para casa</h1></header><nav class="temas"><a class="t-azul" href="/catarro">Catarro</a><a class="t-ambar" href="/fiebre">Fiebre</a><a class="t-verde" href="/gastroenteritis">Diarrea y vómitos</a><a class="t-rosa" href="/urticaria">Urticaria</a></nav></main><script>
+(function(){try{
+var s=new URLSearchParams(location.search).get('s');
+s=(s==='nfc'||s==='qr')?s:'directo';
 var tema=document.body.dataset.tema;
-/* TODO medición: enviar {tema, origen:s, fecha} a Supabase */
+if(!tema)return;
+var k='esc:'+tema+':'+s;
+try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1');}catch(e){}
+fetch('https://mffvkijopbweiycnpyqy.supabase.co/rest/v1/escaneos',{method:'POST',keepalive:true,
+headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mZnZraWpvcGJ3ZWl5Y25weXF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0MDg5NzQsImV4cCI6MjEwNjk4NDk3NH0.dO5AV-LbeG6pBKaGlORxl5HRivehN_tIZd4o1yaD4YA','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mZnZraWpvcGJ3ZWl5Y25weXF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0MDg5NzQsImV4cCI6MjEwNjk4NDk3NH0.dO5AV-LbeG6pBKaGlORxl5HRivehN_tIZd4o1yaD4YA','Content-Type':'application/json','Prefer':'return=minimal'},
+body:JSON.stringify({tema:tema,origen:s,user_agent:(navigator.userAgent||'').slice(0,300)})}).catch(function(){});
 }catch(e){}})();
 </script></body></html>

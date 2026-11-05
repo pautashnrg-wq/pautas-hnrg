@@ -36,6 +36,17 @@ li>span{min-width:0}
 .alarma .mk{color:var(--alarm)}
 .alarma .pie{margin:12px 0 0;font-weight:700;color:var(--alarm)}
 .cuidados .mk{color:var(--tema)}
+.bloque{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.bloque h3{font-family:var(--f-display);font-weight:600;font-size:1.1rem;margin:0;color:var(--tema)}
+.bloque p{margin:0}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-variant-numeric:tabular-nums}
+caption{text-align:left;font-weight:700;padding-bottom:6px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:.85rem;color:var(--muted);background:var(--bg)}
+tbody tr:last-child td{border-bottom:0}
+ol{margin:0;padding:0;list-style:none;counter-reset:paso;display:flex;flex-direction:column;gap:10px}
+ol li{counter-increment:paso}
+ol li::before{content:counter(paso);font-weight:700;color:var(--card);background:var(--tema);border-radius:50%;width:1.4rem;height:1.4rem;display:grid;place-items:center;font-size:.85rem;margin-top:.1rem}
 .evitar .mk{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.9rem;display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--ink)}
@@ -55,8 +66,15 @@ nav.temas a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 <section class="evitar"><h2>Qué no hacer</h2><ul><li><span class="mk" aria-hidden="true">✕</span><span>Baños con agua fría o paños con alcohol.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Alternar medicamentos sin indicación médica.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Despertarlo solo para darle el antitérmico.</span></li></ul></section>
 <footer><strong>Guardá esta página en tu celular.</strong><span>Esta información no reemplaza la consulta médica.</span></footer>
 </div></main><script>
-(function(){try{var s=new URLSearchParams(location.search).get('s')||'directo';
+(function(){try{
+var s=new URLSearchParams(location.search).get('s');
+s=(s==='nfc'||s==='qr')?s:'directo';
 var tema=document.body.dataset.tema;
-/* TODO medición: enviar {tema, origen:s, fecha} a Supabase */
+if(!tema)return;
+var k='esc:'+tema+':'+s;
+try{if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1');}catch(e){}
+fetch('https://mffvkijopbweiycnpyqy.supabase.co/rest/v1/escaneos',{method:'POST',keepalive:true,
+headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mZnZraWpvcGJ3ZWl5Y25weXF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0MDg5NzQsImV4cCI6MjEwNjk4NDk3NH0.dO5AV-LbeG6pBKaGlORxl5HRivehN_tIZd4o1yaD4YA','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mZnZraWpvcGJ3ZWl5Y25weXF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0MDg5NzQsImV4cCI6MjEwNjk4NDk3NH0.dO5AV-LbeG6pBKaGlORxl5HRivehN_tIZd4o1yaD4YA','Content-Type':'application/json','Prefer':'return=minimal'},
+body:JSON.stringify({tema:tema,origen:s,user_agent:(navigator.userAgent||'').slice(0,300)})}).catch(function(){});
 }catch(e){}})();
 </script></body></html>
