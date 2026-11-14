@@ -5,18 +5,18 @@
 :root{
   --bg:#F4F7F8; --card:#FFFFFF; --ink:#13303A; --muted:#536A73; --line:#D9E3E6;
   --alarm:#B42318; --alarm-bg:#FDEDEB; --alarm-ink:#7A1A12;
-  --azul:#1F5FA6; --ambar:#9A5B00; --verde:#2A7148;
+  --azul:#1F5FA6; --ambar:#9A5B00; --verde:#2A7148; --rosa:#B5176E; --teja:#BF4B2E; --marron:#8A5A2B;
   --f-display:"Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
   --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0E1A1F; --card:#15252B; --ink:#E6EFF1; --muted:#9CB2B9; --line:#26393F;
   --alarm:#FF8A7A; --alarm-bg:#3A1714; --alarm-ink:#FFD6CF;
-  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; color-scheme:dark}}
+  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; --rosa:#F48FB1; --teja:#F2956E; --marron:#D1A26A; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0E1A1F; --card:#15252B; --ink:#E6EFF1; --muted:#9CB2B9; --line:#26393F;
   --alarm:#FF8A7A; --alarm-bg:#3A1714; --alarm-ink:#FFD6CF;
-  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; color-scheme:dark}
+  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; --rosa:#F48FB1; --teja:#F2956E; --marron:#D1A26A; color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.5}
 .wrap{max-width:34rem;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:flex;flex-direction:column;gap:20px}
@@ -35,7 +35,7 @@ li>span{min-width:0}
 .alarma li{color:var(--alarm-ink)}
 .alarma .mk{color:var(--alarm)}
 .alarma .pie{margin:12px 0 0;font-weight:700;color:var(--alarm)}
-.cuidados .mk{color:var(--tema)}
+.cuidados .mk{color:var(--tema)} .intro .mk{color:var(--tema)}
 .bloque{margin-top:18px;display:flex;flex-direction:column;gap:10px}
 .bloque h3{font-family:var(--f-display);font-weight:600;font-size:1.1rem;margin:0;color:var(--tema)}
 .bloque p{margin:0}
@@ -50,7 +50,7 @@ ol li::before{content:counter(paso);font-weight:700;color:var(--card);background
 .evitar .mk{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.9rem;display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--ink)}
-.t-azul{--tema:var(--azul)} .t-ambar{--tema:var(--ambar)} .t-verde{--tema:var(--verde)}
+.t-azul{--tema:var(--azul)} .t-ambar{--tema:var(--ambar)} .t-verde{--tema:var(--verde)} .t-rosa{--tema:var(--rosa)} .t-teja{--tema:var(--teja)} .t-marron{--tema:var(--marron)}
 .chip{align-self:flex-start;font-size:.8rem;font-weight:700;color:var(--tema);border:1.5px solid var(--tema);border-radius:999px;padding:1px 10px}
 nav.temas{display:flex;flex-wrap:wrap;gap:8px}
 nav.temas a{font-weight:700;color:var(--tema);text-decoration:none;border:1.5px solid var(--tema);border-radius:999px;padding:6px 14px}
@@ -70,10 +70,22 @@ nav.temas a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 :root[data-theme="dark"] .aviso h3{color:#F2C14E}
 :root[data-theme="dark"] .aviso .mk{color:#F2C14E}
 :root[data-theme="dark"] .aviso li,:root[data-theme="dark"] .aviso p{color:#F0E2BC}
+/* Desplegables (details/summary): por ejemplo, dosis por fármaco */
+details.desp{border:1px solid var(--line);border-radius:10px;background:var(--card)}
+details.desp summary{cursor:pointer;padding:12px 14px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.desp summary::-webkit-details-marker{display:none}
+details.desp summary::after{content:"+";font-family:var(--f-display);font-size:1.4rem;line-height:1;color:var(--tema);font-weight:700}
+details.desp[open] summary::after{content:"–"}
+summary .droga{font-weight:700;color:var(--tema)}
+summary .pres{color:var(--ink);font-weight:400;font-size:.95rem}
+.desp-cont{padding:0 14px 14px}
+.nota{margin:10px 0 0;font-size:.9rem;color:var(--muted);font-style:italic}
+.btn-descarga{display:inline-block;margin-top:4px;background:var(--tema);color:var(--card);text-decoration:none;font-family:var(--f-display);font-weight:600;padding:11px 18px;border-radius:999px}
+.btn-descarga:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 </style></head>
 <body data-tema="catarro"><main class="wrap"><div class="t-azul" style="display:flex;flex-direction:column;gap:20px">
 <header><div class="hosp">Hospital de Niños Ricardo Gutiérrez · Guardia</div><h1>Catarro</h1><div class="sub">Resfrío e infecciones de vías aéreas superiores</div></header>
-<section class="intro"><p>El catarro de vías aéreas es una infección por virus, casi siempre el <strong>rinovirus</strong>.</p><p><u>Es muy común</u>: en menores de 6 años, tener hasta 10 episodios por año es normal, sobre todo al empezar el jardín o el colegio.</p><p>Da fiebre, tos y mocos. A veces también algún vómito aislado, sarpullido en la piel, ojos rojos o un poco de dolor de garganta.</p><p>Se cura solo. No necesita un tratamiento específico.</p></section>
+<section class="intro"><ul><li><span class="mk" aria-hidden="true">•</span><span>El catarro de vías aéreas es una infección por virus, casi siempre el <strong>rinovirus</strong>.</span></li><li><span class="mk" aria-hidden="true">•</span><span><u>Es muy común</u>: en menores de 6 años, tener hasta 10 episodios por año es normal, sobre todo al empezar el jardín o el colegio.</span></li><li><span class="mk" aria-hidden="true">•</span><span>Da fiebre, tos y mocos. A veces también algún vómito aislado, sarpullido en la piel, ojos rojos o un poco de dolor de garganta.</span></li><li><span class="mk" aria-hidden="true">•</span><span>Se cura solo. No necesita un tratamiento específico.</span></li></ul></section>
 <section class="alarma"><h2>Volvé a la guardia si…</h2><ul><li><span class="mk" aria-hidden="true">!</span><span>Le cuesta respirar: se le marcan las costillas, se le hunde un huequito entre el cuello y el pecho, o respira muy rápido cuando no tiene fiebre.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Le duele el pecho.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Vomita y no logra tomar líquidos.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Se le pone azul la cara después de toser varias veces.</span></li><li><span class="mk" aria-hidden="true">!</span><span>La fiebre le dura más de 6 días.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Es menor de 3 meses y tiene fiebre.</span></li></ul><p class="pie">Ante la duda, consultá. La guardia atiende las 24 horas.</p></section>
 <section class="cuidados"><h2>Cuidados en casa</h2><ul><li><span class="mk" aria-hidden="true">✓</span><span>Dale el antitérmico solo si tiene fiebre (38 °C o más).</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Insistí con la hidratación: mejor ofrecerle agua que jugos o gaseosas.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>El apetito vuelve de a poco, a medida que mejora el cuadro.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Ayudalo a movilizar los mocos: lavados nasales con spray (tipo Hypersol) o solución fisiológica común + sacamocos.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Lavate las manos seguido para no contagiar a los demás.</span></li></ul><div class="bloque aviso"><h3>Para la tos</h3><ul><li><span class="mk" aria-hidden="true">✓</span><span>No le des remedios caseros para la tos.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Los jarabes para la tos que se venden en la farmacia no demostraron que sirvan.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Lo único recomendado es la <strong>miel</strong> 🍯, y solo en mayores de 1 año: 3 cucharadas, 3 veces por día, con una bebida caliente (té o leche).</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Si querés hacer vapor, que sea en la ducha con el agua caliente corriendo, siempre con un adulto al lado.</span></li></ul></div></section>
 <section class="evitar"><h2>Qué no hacer</h2><ul><li><span class="mk" aria-hidden="true">✕</span><span>Vapor con una olla de agua hirviendo con sal.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Nebulizaciones con corticoides o salbutamol.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Antibióticos.</span></li></ul></section>

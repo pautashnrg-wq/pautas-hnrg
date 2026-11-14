@@ -5,18 +5,18 @@
 :root{
   --bg:#F4F7F8; --card:#FFFFFF; --ink:#13303A; --muted:#536A73; --line:#D9E3E6;
   --alarm:#B42318; --alarm-bg:#FDEDEB; --alarm-ink:#7A1A12;
-  --azul:#1F5FA6; --ambar:#9A5B00; --verde:#2A7148; --rosa:#B5176E;
+  --azul:#1F5FA6; --ambar:#9A5B00; --verde:#2A7148; --rosa:#B5176E; --teja:#BF4B2E; --marron:#8A5A2B;
   --f-display:"Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
   --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0E1A1F; --card:#15252B; --ink:#E6EFF1; --muted:#9CB2B9; --line:#26393F;
   --alarm:#FF8A7A; --alarm-bg:#3A1714; --alarm-ink:#FFD6CF;
-  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; --rosa:#F48FB1; color-scheme:dark}}
+  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; --rosa:#F48FB1; --teja:#F2956E; --marron:#D1A26A; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0E1A1F; --card:#15252B; --ink:#E6EFF1; --muted:#9CB2B9; --line:#26393F;
   --alarm:#FF8A7A; --alarm-bg:#3A1714; --alarm-ink:#FFD6CF;
-  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; --rosa:#F48FB1; color-scheme:dark}
+  --azul:#7DB3F0; --ambar:#F2B657; --verde:#7FCB9C; --rosa:#F48FB1; --teja:#F2956E; --marron:#D1A26A; color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.5}
 .wrap{max-width:34rem;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:flex;flex-direction:column;gap:20px}
@@ -35,7 +35,7 @@ li>span{min-width:0}
 .alarma li{color:var(--alarm-ink)}
 .alarma .mk{color:var(--alarm)}
 .alarma .pie{margin:12px 0 0;font-weight:700;color:var(--alarm)}
-.cuidados .mk{color:var(--tema)}
+.cuidados .mk{color:var(--tema)} .intro .mk{color:var(--tema)}
 .bloque{margin-top:18px;display:flex;flex-direction:column;gap:10px}
 .bloque h3{font-family:var(--f-display);font-weight:600;font-size:1.1rem;margin:0;color:var(--tema)}
 .bloque p{margin:0}
@@ -50,7 +50,7 @@ ol li::before{content:counter(paso);font-weight:700;color:var(--card);background
 .evitar .mk{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:.9rem;display:flex;flex-direction:column;gap:4px}
 footer strong{color:var(--ink)}
-.t-azul{--tema:var(--azul)} .t-ambar{--tema:var(--ambar)} .t-verde{--tema:var(--verde)} .t-rosa{--tema:var(--rosa)}
+.t-azul{--tema:var(--azul)} .t-ambar{--tema:var(--ambar)} .t-verde{--tema:var(--verde)} .t-rosa{--tema:var(--rosa)} .t-teja{--tema:var(--teja)} .t-marron{--tema:var(--marron)}
 .chip{align-self:flex-start;font-size:.8rem;font-weight:700;color:var(--tema);border:1.5px solid var(--tema);border-radius:999px;padding:1px 10px}
 nav.temas{display:flex;flex-wrap:wrap;gap:8px}
 nav.temas a{font-weight:700;color:var(--tema);text-decoration:none;border:1.5px solid var(--tema);border-radius:999px;padding:6px 14px}
@@ -80,10 +80,12 @@ summary .droga{font-weight:700;color:var(--tema)}
 summary .pres{color:var(--ink);font-weight:400;font-size:.95rem}
 .desp-cont{padding:0 14px 14px}
 .nota{margin:10px 0 0;font-size:.9rem;color:var(--muted);font-style:italic}
+.btn-descarga{display:inline-block;margin-top:4px;background:var(--tema);color:var(--card);text-decoration:none;font-family:var(--f-display);font-weight:600;padding:11px 18px;border-radius:999px}
+.btn-descarga:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 </style></head>
 <body data-tema="urticaria"><main class="wrap"><div class="t-rosa" style="display:flex;flex-direction:column;gap:20px">
 <header><div class="hosp">Hospital de Niños Ricardo Gutiérrez · Guardia</div><h1>Urticaria</h1><div class="sub">Ronchas que pican en la piel</div></header>
-<section class="intro"><p>La urticaria es una reacción inflamatoria de la piel: aparecen manchas sobreelevadas y rojizas (habones) que pican, van cambiando de tamaño y de lugar, salen por todo el cuerpo y desaparecen en menos de un día.</p><p>La causa más frecuente es una infección viral, casi siempre un catarro (alrededor del 40 % de los casos). Le siguen los medicamentos (antibióticos, analgésicos), las picaduras de insectos, los alimentos y los conservantes.</p><p>Muchas veces no se encuentra qué la desencadenó: se la llama urticaria espontánea.</p><p><strong>Se cura sola.</strong> Las lesiones suelen desaparecer por completo alrededor del 5.º día. Pueden durar más, o reaparecer una semana después de haberse ido.</p><p><strong>Que aparezca urticaria no significa que tu hijo sea alérgico.</strong></p></section>
+<section class="intro"><ul><li><span class="mk" aria-hidden="true">•</span><span>La urticaria es una reacción inflamatoria de la piel: aparecen manchas sobreelevadas y rojizas (habones) que pican, van cambiando de tamaño y de lugar, salen por todo el cuerpo y desaparecen en menos de un día.</span></li><li><span class="mk" aria-hidden="true">•</span><span>La causa más frecuente es una infección viral, casi siempre un catarro (alrededor del 40 % de los casos). Le siguen los medicamentos (antibióticos, analgésicos), las picaduras de insectos, los alimentos y los conservantes.</span></li><li><span class="mk" aria-hidden="true">•</span><span>Muchas veces no se encuentra qué la desencadenó: se la llama urticaria espontánea.</span></li><li><span class="mk" aria-hidden="true">•</span><span><strong>Se cura sola.</strong> Las lesiones suelen desaparecer por completo alrededor del 5.º día. Pueden durar más, o reaparecer una semana después de haberse ido.</span></li><li><span class="mk" aria-hidden="true">•</span><span><strong>Que aparezca urticaria no significa que tu hijo sea alérgico.</strong></span></li></ul></section>
 <section class="alarma"><h2>Volvé a la guardia si…</h2><ul><li><span class="mk" aria-hidden="true">!</span><span>Tiene dolor además de la picazón.</span></li><li><span class="mk" aria-hidden="true">!</span><span>La picazón no lo deja dormir a pesar de darle la medicación indicada.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Tiene lastimaduras de rascado que parecen infectadas (con pus, más rojas que el resto, con dolor).</span></li><li><span class="mk" aria-hidden="true">!</span><span>En algún momento le cuesta respirar.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Tiene muchos episodios repetidos.</span></li><li><span class="mk" aria-hidden="true">!</span><span>Después de dos semanas no mejora.</span></li></ul><p class="pie">Ante la duda, consultá. La guardia atiende las 24 horas.</p></section>
 <section class="cuidados"><h2>Cuidados en casa</h2><ul><li><span class="mk" aria-hidden="true">✓</span><span>Si justo antes de que apareciera empezaste algo nuevo (un medicamento, un alimento, un jabón o un perfume para la ropa), suspendelo: puede haber sido lo que la desencadenó.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Puede ir al colegio o al jardín.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>No necesita ninguna dieta especial.</span></li><li><span class="mk" aria-hidden="true">✓</span><span>Usá protector solar si va a estar al sol.</span></li></ul><div class="bloque"><h3>Tratamiento: antihistamínicos</h3><p>Se da un antihistamínico. Tocá cada uno para ver la dosis según el peso del chico.</p><details class="desp"><summary><span><span class="droga">Difenhidramina</span> <span class="pres">jarabe 12,5 mg/5 ml</span></span></summary><div class="desp-cont"><table><thead><tr><th>Peso</th><th>Dosis</th></tr></thead><tbody><tr><td>5 kg</td><td>2 ml cada 8 h</td></tr><tr><td>10 kg</td><td>4 ml cada 8 h</td></tr><tr><td>15 kg</td><td>6 ml cada 8 h</td></tr><tr><td>20 kg</td><td>8 ml cada 8 h</td></tr><tr><td>25 kg</td><td>10 ml cada 8 h</td></tr><tr><td>30 kg</td><td>12 ml cada 8 h</td></tr></tbody></table><p class="nota">No aumentar la dosis.</p></div></details><details class="desp"><summary><span><span class="droga">Loratadina</span> <span class="pres">jarabe 1 mg/ml o comprimido 10 mg</span></span></summary><div class="desp-cont"><table><thead><tr><th>Peso</th><th>Dosis</th></tr></thead><tbody><tr><td>5 kg</td><td>1 ml cada 24 h</td></tr><tr><td>10 kg</td><td>2 ml cada 24 h</td></tr><tr><td>15 kg</td><td>3 ml cada 24 h</td></tr><tr><td>20 kg</td><td>4 ml cada 24 h</td></tr><tr><td>25 kg</td><td>½ comprimido cada 24 h</td></tr><tr><td>30 kg</td><td>1 comprimido cada 24 h</td></tr></tbody></table><p class="nota">Si persiste la picazón, se puede dar una dosis extra en el día (mejor cada 12 h que duplicar una sola toma).</p></div></details><details class="desp"><summary><span><span class="droga">Desloratadina</span> <span class="pres">jarabe 2,5 mg/5 ml o comprimido 10 mg</span></span></summary><div class="desp-cont"><table><thead><tr><th>Peso</th><th>Dosis</th></tr></thead><tbody><tr><td>5 kg</td><td>2 ml cada 24 h</td></tr><tr><td>10 kg</td><td>4 ml cada 24 h</td></tr><tr><td>15 kg</td><td>6 ml cada 24 h</td></tr><tr><td>20 kg</td><td>8 ml cada 24 h</td></tr><tr><td>25 kg</td><td>10 ml cada 24 h</td></tr><tr><td>30 kg</td><td>1 comprimido cada 24 h</td></tr></tbody></table><p class="nota">Si persiste la picazón, se puede dar una dosis extra en el día (mejor cada 12 h que duplicar una sola toma).</p></div></details><details class="desp"><summary><span><span class="droga">Cetirizina</span> <span class="pres">gotas 10 mg/ml o comprimido 10 mg</span></span></summary><div class="desp-cont"><table><thead><tr><th>Peso</th><th>Dosis</th></tr></thead><tbody><tr><td>5 kg</td><td>5 gotas cada 24 h</td></tr><tr><td>10 kg</td><td>10 gotas cada 24 h</td></tr><tr><td>15 kg</td><td>15 gotas cada 24 h</td></tr><tr><td>20 kg</td><td>20 gotas cada 24 h</td></tr><tr><td>25 kg</td><td>1 comprimido cada 24 h</td></tr><tr><td>30 kg</td><td>1 comprimido cada 24 h</td></tr></tbody></table><p class="nota">Si persiste la picazón, se puede dar una dosis extra en el día (mejor cada 12 h que duplicar una sola toma).</p></div></details></div></section>
 <section class="evitar"><h2>Qué no hacer</h2><ul><li><span class="mk" aria-hidden="true">✕</span><span>Dar corticoides, salvo que lo indique el médico.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Aplicar compresas en la piel.</span></li><li><span class="mk" aria-hidden="true">✕</span><span>Aplicar cremas o preparados caseros en la piel.</span></li></ul></section>
